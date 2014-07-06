@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmDo", "cmDo.csproj", "{D4CB0346-4B45-45C4-AC3F-BE96CD811041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmDo.Tests", "cmDo.Tests\cmDo.Tests.csproj", "{B93D1CB0-21A0-47E6-898A-E749D5D060C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4CB0346-4B45-45C4-AC3F-BE96CD811041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4CB0346-4B45-45C4-AC3F-BE96CD811041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4CB0346-4B45-45C4-AC3F-BE96CD811041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4CB0346-4B45-45C4-AC3F-BE96CD811041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B93D1CB0-21A0-47E6-898A-E749D5D060C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93D1CB0-21A0-47E6-898A-E749D5D060C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93D1CB0-21A0-47E6-898A-E749D5D060C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93D1CB0-21A0-47E6-898A-E749D5D060C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
