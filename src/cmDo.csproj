@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>s7.cmDo</RootNamespace>
     <AssemblyName>cmDo</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
     <StartupObject>
@@ -157,7 +157,7 @@
   -->
   <Target Name="AfterBuild">
     <MakeDir Directories="$(OutputPath)..\$(Configuration)Merged" Condition="!Exists('$(OutputPath)..\$(Configuration)Merged')" />
-    <Exec Command="&quot;$(MSBuildProjectPath)..\lib\Ilmerge.exe&quot; /ndebug /out:$(OutputPath)..\$(Configuration)Merged\$(AssemblyName).exe /targetplatform:v4,&quot;$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0&quot; &quot;@(IntermediateAssembly)&quot; @(ReferenceCopyLocalPaths->'&quot;%(FullPath)&quot;', ' ')" />
+    <Exec Command="&quot;$(MSBuildProjectPath)..\lib\Ilmerge.exe&quot; /ndebug /out:$(OutputPath)..\$(Configuration)Merged\$(AssemblyName).exe /targetplatform:v4,&quot;$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8&quot; &quot;@(IntermediateAssembly)&quot; @(ReferenceCopyLocalPaths->'&quot;%(FullPath)&quot;', ' ')" />
     <!--<Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />-->
   </Target>
 </Project>
