@@ -57,13 +57,24 @@ namespace s7.cmDo
                         tasks.Add(SanitizeArgs(args));
                     }
 
+					bool success = false;
                     foreach (string[] taskInfo in tasks)
                     {
-                        TaskBuilder tb = new TaskBuilder(taskInfo, GetDefaultTask());
-                        Task t = tb.ToTask();
+						success = false;
+						while (!success) {
+							try {
+								TaskBuilder tb = new TaskBuilder(taskInfo, GetDefaultTask());
+								Task t = tb.ToTask();
 
-                        ToodleDo.AddTask(t);
-                        SendNotification("Task successfully added!", "Task added", Growler.SuccessNotification);
+								ToodleDo.AddTask(t);
+								success = true;
+								SendNotification("Task successfully added!", "Task added", Growler.SuccessNotification);
+							}
+							catch (Exception e) {
+								SendNotification("An error occured while sending '" + String.Join(" ",taskInfo) + "' to Toodledo! Waiting 30 seconds before retrying.\n\nError: " + e.Message, "Error", Growler.ErrorNotification);
+								System.Threading.Thread.Sleep(30000);
+							}
+						}
                     }
                 }
             }
