@@ -41,7 +41,6 @@ namespace s7.cmDo
                     if (!Cfg.cmDoConfig.Exists)
                         throw new System.IO.FileNotFoundException("Could not find the configuration file with authentication information.\nPlease run cmDo with the -config argument and specify your username and password.", Cfg.cmDoConfig.ConfigPath);
                     Cfg.cmDoConfig cfg = Cfg.cmDoConfig.Load();
-                    ToodleDo.Connect(cfg.UserID, Security.Protector.Unprotect(cfg.ProtectedPassword));
 
                     List<string[]> tasks = new List<string[]>();
                     if (args.Length > 0 && args[0].ToLower() == "-pipe")
@@ -58,11 +57,15 @@ namespace s7.cmDo
                     }
 
 					bool success = false;
+					bool reconnect = true;
                     foreach (string[] taskInfo in tasks)
                     {
 						success = false;
 						while (!success) {
 							try {
+								if reconnect:
+									ToodleDo.Connect(cfg.UserID, Security.Protector.Unprotect(cfg.ProtectedPassword));
+									
 								TaskBuilder tb = new TaskBuilder(taskInfo, GetDefaultTask());
 								Task t = tb.ToTask();
 
@@ -73,6 +76,7 @@ namespace s7.cmDo
 							catch (Exception e) {
 								SendNotification("An error occured while sending '" + String.Join(" ",taskInfo) + "' to Toodledo! Waiting 30 seconds before retrying.\n\nError: " + e.Message, "Error", Growler.ErrorNotification);
 								System.Threading.Thread.Sleep(30000);
+								reconnect = true;
 							}
 						}
                     }
